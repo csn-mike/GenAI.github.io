@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Who Owns What AI Creates?</title>
+  <meta
+    name="description"
+    content="An educational explainer on generative AI ownership, ethics, stakeholders, and policy choices."
+  />
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --bg: #f7f7f7;
+      --card: #ffffff;
+      --text: #111111;
+      --muted: #4f4f4f;
+      --border: #101010;
+      --accent: #ff2aa3;
+      --accent2: #1b4dff;
+      --good: #13b76a;
+      --warn: #ff9f0a;
+      --risk: #f43f5e;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background: var(--bg);
+      font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    .navbar {
+      background: #fff !important;
+      border-bottom: 3px solid var(--border);
+    }
+
+    .navbar-brand {
+      color: #000 !important;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+    }
+
+    .nav-link {
+      color: #111 !important;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-link:hover {
+      color: var(--accent) !important;
+    }
+
+    .hero {
+      padding: 6.3rem 1rem 1.4rem;
+    }
+
+    .hero-shell {
+      max-width: 1120px;
+      margin: 0 auto;
+      border: 3px solid var(--border);
+      background: #fff;
+      box-shadow: 8px 8px 0 #000;
+      padding: clamp(1.2rem, 2vw, 2.1rem);
+    }
+
+    .topline {
+      border-top: 4px solid #000;
+      border-bottom: 1px solid #000;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.45rem 0;
+      margin-bottom: 1rem;
+      font-size: 0.76rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.45px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      border: 2px solid #000;
+      padding: 0.2rem 0.5rem;
+      font-size: 0.76rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.45px;
+      margin-bottom: 0.8rem;
+      background: #fff;
+    }
+
+    h1, h2, h3 {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 8.6vw, 5.5rem);
+      line-height: 0.98;
+      letter-spacing: -1px;
+      margin-bottom: 1rem;
+    }
+
+    .lead {
+      font-size: 1.08rem;
+      color: #262626;
+      max-width: 840px;
+    }
+
+    .split-headline {
+      margin-top: 1.8rem;
+      border-top: 3px solid #000;
+      padding-top: 1.2rem;
+    }
+
+    .headline-side {
+      border-left: 2px solid #000;
+      padding-left: 1rem;
+      font-size: 0.96rem;
+      color: #2a2a2a;
+    }
+
+    .mini-stat {
+      border: 2px solid #000;
+      padding: 0.9rem;
+      height: 100%;
+      background: #fff;
+      font-size: 0.95rem;
+    }
+
+    .mini-stat strong {
+      display: block;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.2rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .section {
+      padding: 2.8rem 1rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.45rem, 3vw, 2.5rem);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      max-width: 900px;
+      margin-bottom: 1.4rem;
+    }
+
+    .card-elevated {
+      border: 2px solid #000;
+      background: #fff;
+      padding: 1.1rem;
+      height: 100%;
+    }
+
+    .card-elevated:hover {
+      box-shadow: 6px 6px 0 #000;
+      transform: translateY(-2px);
+      transition: 180ms ease;
+    }
+
+    .pill {
+      display: inline-block;
+      border: 2px solid #000;
+      padding: 0.16rem 0.45rem;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline {
+      border-left: 3px solid #000;
+      padding-left: 1rem;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 1rem;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      width: 0.62rem;
+      height: 0.62rem;
+      background: var(--accent);
+      left: -1.36rem;
+      top: 0.3rem;
+      box-shadow: 0 0 0 2px #000;
+    }
+
+    .source-list li {
+      margin-bottom: 0.45rem;
+    }
+
+    .source-list a {
+      color: var(--accent2);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .source-list a:hover {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    .options-grid .card-elevated {
+      border-top: 6px solid #000;
+    }
+
+    .policy-panel {
+      border: 2px solid #000;
+      padding: 1rem;
+      background: #fff;
+      height: 100%;
+    }
+
+    .metric {
+      margin-bottom: 0.8rem;
+    }
+
+    .metric-top {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.86rem;
+      font-weight: 600;
+      margin-bottom: 0.24rem;
+    }
+
+    .metric-track {
+      height: 0.72rem;
+      border: 1px solid #000;
+      background: #efefef;
+    }
+
+    .metric-fill {
+      height: 100%;
+      width: 50%;
+      background: #222;
+      transition: width 220ms ease;
+    }
+
+    .fill-innovation { background: linear-gradient(90deg, #0ea5e9, #1d4ed8); }
+    .fill-fairness { background: linear-gradient(90deg, #f43f5e, #ff2aa3); }
+    .fill-creator { background: linear-gradient(90deg, #fb923c, #ff9f0a); }
+    .fill-trust { background: linear-gradient(90deg, #22c55e, #13b76a); }
+
+    .result-box {
+      border: 2px solid #000;
+      background: #fff;
+      padding: 1rem;
+    }
+
+    .result-title {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .q-block {
+      border: 1px solid #000;
+      padding: 0.75rem;
+      margin-bottom: 0.7rem;
+      background: #fcfcfc;
+    }
+
+    .q-block legend {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+    }
+
+    .form-check-label {
+      font-size: 0.92rem;
+    }
+
+    .persona-card {
+      border-left: 6px solid #000;
+    }
+
+    .note {
+      font-size: 0.86rem;
+      color: #555;
+    }
+
+    footer {
+      margin-top: 1.6rem;
+      border-top: 3px solid #000;
+      background: #fff;
+      color: #4f4f4f;
+      text-align: center;
+      padding: 2rem 1rem 3rem;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#top">AI Ownership Lab</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMain">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#intro">Intro</a></li>
+          <li class="nav-item"><a class="nav-link" href="#issues">Ethics</a></li>
+          <li class="nav-item"><a class="nav-link" href="#stakeholders">Stakeholders</a></li>
+          <li class="nav-item"><a class="nav-link" href="#deep-dive">Deep Dive</a></li>
+          <li class="nav-item"><a class="nav-link" href="#options">Options</a></li>
+          <li class="nav-item"><a class="nav-link" href="#interactive">Interactive</a></li>
+          <li class="nav-item"><a class="nav-link" href="#personas">Personas</a></li>
+          <li class="nav-item"><a class="nav-link" href="#sources">Sources</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+    <section id="intro" class="hero">
+      <div class="hero-shell">
+        <div class="topline">
+          <span>Generative AI Ownership Website</span>
+          <span>By Mike Wicks Jr.</span>
+        </div>
+        <span class="eyebrow">Ethics + law + policy literacy</span>
+        <h1>Who Owns What AI Creates?</h1>
+        <p class="lead">
+          Generative AI tools like ChatGPT, Gemini, and Claude are now used for writing, coding,
+          art, music, and business tasks. They improve speed and access, but they also raise
+          difficult questions about ownership, fairness, and responsibility.
+        </p>
+        <p class="lead mb-0">
+          This website explains the ownership debate, identifies who is affected, and helps users
+          think critically about practical policy solutions.
+        </p>
+        <div class="row g-3 split-headline">
+          <div class="col-lg-8">
+            <h2 class="section-title mb-2">Why this matters now</h2>
+            <p class="mb-0">
+              Courts, regulators, tech companies, and creators are already in active disputes over
+              training data use, authorship, and compensation. Decisions made in the next few
+              years will shape creative work, education, and business norms.
+            </p>
+          </div>
+          <div class="col-lg-4">
+            <div class="headline-side">
+              The central dispute: user prompt effort vs model developer rights vs creator claims
+              over training data.
+            </div>
+          </div>
+        </div>
+        <div class="row g-3 mt-1">
+          <div class="col-md-4">
+            <div class="mini-stat">
+              <strong>Ownership</strong>
+              Who gets legal rights to AI-generated outputs?
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="mini-stat">
+              <strong>Fairness</strong>
+              Should creators be paid if their works train models?
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="mini-stat">
+              <strong>Responsibility</strong>
+              Who is accountable for harmful or infringing outputs?
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="issues" class="section">
+      <div class="container">
+        <h2 class="section-title">Ethical issues at stake</h2>
+        <p class="section-subtitle">
+          The biggest ethical concern is ownership and fairness. Many creators argue that AI
+          systems learned from copyrighted work without consent or compensation, while companies
+          argue training is transformative and supports innovation.
+        </p>
+        <div class="row g-3">
+          <div class="col-md-4">
+            <article class="card-elevated">
+              <span class="pill">Consent</span>
+              <h3>Use of training data</h3>
+              <p class="mb-0">
+                Creators often do not know when or how their work appears in model training data.
+              </p>
+            </article>
+          </div>
+          <div class="col-md-4">
+            <article class="card-elevated">
+              <span class="pill">Compensation</span>
+              <h3>Economic fairness</h3>
+              <p class="mb-0">
+                Artists and writers worry that AI can imitate style and reduce paid creative work.
+              </p>
+            </article>
+          </div>
+          <div class="col-md-4">
+            <article class="card-elevated">
+              <span class="pill">Transparency</span>
+              <h3>Public trust and labeling</h3>
+              <p class="mb-0">
+                Users may not know what is AI-generated or where the model's knowledge came from.
+              </p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="stakeholders" class="section">
+      <div class="container">
+        <h2 class="section-title">Stakeholders</h2>
+        <p class="section-subtitle">
+          Different groups experience different benefits and risks, which is why no single policy
+          satisfies everyone.
+        </p>
+        <div class="row g-3">
+          <div class="col-md-3">
+            <article class="card-elevated">
+              <h3>Tech companies</h3>
+              <p class="mb-0">Build and monetize models; face legal, compliance, and trust risks.</p>
+            </article>
+          </div>
+          <div class="col-md-3">
+            <article class="card-elevated">
+              <h3>Artists and creators</h3>
+              <p class="mb-0">Concerned about consent, control, style imitation, and lost income.</p>
+            </article>
+          </div>
+          <div class="col-md-3">
+            <article class="card-elevated">
+              <h3>Students and users</h3>
+              <p class="mb-0">Gain convenience but may not understand ownership/legal constraints.</p>
+            </article>
+          </div>
+          <div class="col-md-3">
+            <article class="card-elevated">
+              <h3>Governments</h3>
+              <p class="mb-0">Set copyright, transparency, and accountability frameworks.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="deep-dive" class="section">
+      <div class="container">
+        <h2 class="section-title">Informational deep dive</h2>
+        <p class="section-subtitle">
+          Generative AI systems train on large datasets (text, images, audio, and code), then
+          generate outputs from user prompts. Supporters compare this to human learning; critics
+          argue it can appropriate copyrighted work at scale.
+        </p>
+        <div class="card-elevated">
+          <div class="timeline">
+            <div class="timeline-item">
+              <strong>Training stage:</strong> Model developers gather and process large datasets to
+              optimize model performance.
+            </div>
+            <div class="timeline-item">
+              <strong>Generation stage:</strong> Users prompt the model; outputs vary based on
+              prompt detail, tool settings, and post-editing.
+            </div>
+            <div class="timeline-item">
+              <strong>Legal uncertainty:</strong> Copyright, fair use, and authorship standards are
+              evolving through court cases and agency guidance.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="options" class="section">
+      <div class="container">
+        <h2 class="section-title">Three policy options</h2>
+        <p class="section-subtitle">
+          These are not perfect choices. Each option creates tradeoffs between innovation,
+          fairness, and enforceability.
+        </p>
+        <div class="row g-3 options-grid">
+          <div class="col-lg-4">
+            <article class="card-elevated">
+              <span class="pill">Option 1</span>
+              <h3>Open use system</h3>
+              <p>
+                Allow broad training on public data and let users own generated outputs.
+              </p>
+              <p class="mb-0"><strong>Pros:</strong> Fast innovation, lower cost, broad access.</p>
+              <p class="mb-0"><strong>Cons:</strong> Weak creator protections and consent issues.</p>
+            </article>
+          </div>
+          <div class="col-lg-4">
+            <article class="card-elevated">
+              <span class="pill">Option 2</span>
+              <h3>Licensing and compensation</h3>
+              <p>
+                Require licenses or compensation when copyrighted work is used in training.
+              </p>
+              <p class="mb-0"><strong>Pros:</strong> Better fairness and creator recognition.</p>
+              <p class="mb-0"><strong>Cons:</strong> Higher costs and slower model deployment.</p>
+            </article>
+          </div>
+          <div class="col-lg-4">
+            <article class="card-elevated">
+              <span class="pill">Option 3</span>
+              <h3>Regulation and transparency</h3>
+              <p>
+                Require training disclosure, AI labels, and anti-copying safeguards.
+              </p>
+              <p class="mb-0"><strong>Pros:</strong> More accountability and user trust.</p>
+              <p class="mb-0"><strong>Cons:</strong> Hard global enforcement and compliance cost.</p>
+            </article>
+          </div>
+        </div>
+        <p class="mt-3 mb-0">
+          <strong>Likely strongest path:</strong> a blend of Options 2 and 3 to balance innovation
+          with fairness and transparency.
+        </p>
+      </div>
+    </section>
+
+    <section id="interactive" class="section">
+      <div class="container">
+        <h2 class="section-title">Interactive policymaker simulator</h2>
+        <p class="section-subtitle">
+          Take the role of a policymaker. Your choices update scores for innovation, fairness,
+          creator protection, and public trust.
+        </p>
+        <div class="row g-3">
+          <div class="col-lg-7">
+            <form id="policyForm" class="policy-panel">
+              <fieldset class="q-block">
+                <legend>1) Should companies train on public creative work without permission?</legend>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="q1" id="q1a" value="allow" checked />
+                  <label class="form-check-label" for="q1a">Yes, broadly allow it</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="q1" id="q1b" value="limited" />
+                  <label class="form-check-label" for="q1b">Allow with guardrails</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="q1" id="q1c" value="require" />
+                  <label class="form-check-label" for="q1c">Require permission/licensing</label>
+                </div>
+              </fieldset>
+
+              <fieldset class="q-block">
+                <legend>2) Should creators be compensated when their work trains AI?</legend>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="q2" id="q2a" value="no" checked />
+                  <label class="form-check-label" for="q2a">No mandatory compensation</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="q2" id="q2b" value="optin" />
+                  <label class="form-check-label" for="q2b">Opt-in compensation framework</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="q2" id="q2c" value="mandatory" />
+                  <label class="form-check-label" for="q2c">Mandatory compensation/royalties</label>
+                </div>
+              </fieldset>
+
+              <fieldset class="q-block">
+                <legend>3) Should AI-generated content be labeled?</legend>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="q3" id="q3a" value="none" checked />
+                  <label class="form-check-label" for="q3a">No labeling requirement</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="q3" id="q3b" value="highrisk" />
+                  <label class="form-check-label" for="q3b">Label only in high-risk contexts</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="q3" id="q3c" value="all" />
+                  <label class="form-check-label" for="q3c">Label all AI-generated outputs</label>
+                </div>
+              </fieldset>
+
+              <fieldset class="q-block mb-0">
+                <legend>4) How strong should government regulation be right now?</legend>
+                <input
+                  type="range"
+                  class="form-range"
+                  min="0"
+                  max="100"
+                  value="45"
+                  id="regulationRange"
+                />
+                <p class="note mb-0">0 = minimal regulation, 100 = strict regulation.</p>
+              </fieldset>
+            </form>
+          </div>
+          <div class="col-lg-5">
+            <div class="result-box mb-3">
+              <div class="result-title">Scoreboard</div>
+              <div class="metric">
+                <div class="metric-top"><span>Innovation</span><span id="innovationValue">50</span></div>
+                <div class="metric-track"><div id="innovationFill" class="metric-fill fill-innovation"></div></div>
+              </div>
+              <div class="metric">
+                <div class="metric-top"><span>Fairness</span><span id="fairnessValue">50</span></div>
+                <div class="metric-track"><div id="fairnessFill" class="metric-fill fill-fairness"></div></div>
+              </div>
+              <div class="metric">
+                <div class="metric-top"><span>Creator protection</span><span id="creatorValue">50</span></div>
+                <div class="metric-track"><div id="creatorFill" class="metric-fill fill-creator"></div></div>
+              </div>
+              <div class="metric mb-0">
+                <div class="metric-top"><span>Public trust</span><span id="trustValue">50</span></div>
+                <div class="metric-track"><div id="trustFill" class="metric-fill fill-trust"></div></div>
+              </div>
+            </div>
+
+            <div class="result-box">
+              <div class="result-title">Policy interpretation</div>
+              <p id="policySummary" class="mb-2">
+                Mixed policy stance: moderate innovation with partial creator protections.
+              </p>
+              <p id="stakeholderImpact" class="mb-0 note">
+                Current impact: moderate benefit to users and companies, with unresolved creator
+                concerns.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="discussion" class="section">
+      <div class="container">
+        <h2 class="section-title">Discussion questions</h2>
+        <div class="card-elevated">
+          <ol class="mb-0">
+            <li>Should AI companies train on public creative work without permission?</li>
+            <li>If you write the prompt, should you own the generated result?</li>
+            <li>Should creators be compensated when their work trains AI systems?</li>
+            <li>Is faster innovation worth possible creative job displacement?</li>
+            <li>Should governments regulate now or wait for more technical maturity?</li>
+            <li>Can AI-generated work be considered original in a legal sense?</li>
+            <li>What happens if AI companies own all outputs from their systems?</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section id="personas" class="section">
+      <div class="container">
+        <h2 class="section-title">Designing for primary personas</h2>
+        <p class="section-subtitle">
+          The site is organized for users with different backgrounds and goals.
+        </p>
+        <div class="row g-3">
+          <div class="col-lg-4">
+            <article class="card-elevated persona-card">
+              <h3>P1: Mike (20, college student)</h3>
+              <p><strong>Goal:</strong> Understand ownership ethics beyond basic AI familiarity.</p>
+              <p class="mb-0">
+                <strong>Design needs:</strong> clear headings, readable text, high contrast,
+                mobile-friendly navigation, and guided flow before interaction.
+              </p>
+            </article>
+          </div>
+          <div class="col-lg-4">
+            <article class="card-elevated persona-card">
+              <h3>P2: Jasmine (27, freelance designer)</h3>
+              <p><strong>Goal:</strong> Learn protections for artists and copyright implications.</p>
+              <p class="mb-0">
+                <strong>Design needs:</strong> creator-focused examples, case references, and quick
+                jump navigation.
+              </p>
+            </article>
+          </div>
+          <div class="col-lg-4">
+            <article class="card-elevated persona-card">
+              <h3>P3: Daniel (34, business owner)</h3>
+              <p><strong>Goal:</strong> Use AI responsibly while maintaining business efficiency.</p>
+              <p class="mb-0">
+                <strong>Design needs:</strong> concise tradeoff summaries and practical ethical
+                checklist-style framing.
+              </p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sources" class="section">
+      <div class="container">
+        <h2 class="section-title">Real-world references</h2>
+        <p class="section-subtitle">
+          These sources are included so the website remains tied to verifiable public information.
+        </p>
+        <div class="card-elevated">
+          <ul class="source-list mb-0">
+            <li>
+              <a href="https://copyright.gov/ai/" target="_blank" rel="noreferrer">
+                U.S. Copyright Office - Copyright and Artificial Intelligence
+              </a>
+            </li>
+            <li>
+              <a href="https://www.nytco.com/press/the-new-york-times-sues-openai-and-microsoft-for-copyright-infringement/" target="_blank" rel="noreferrer">
+                The New York Times Co. lawsuit announcement against OpenAI and Microsoft
+              </a>
+            </li>
+            <li>
+              <a href="https://www.reuters.com/legal/litigation/getty-images-sues-stability-ai-us-copyright-infringement-case-2023-02-06/" target="_blank" rel="noreferrer">
+                Reuters summary: Getty Images v. Stability AI (U.S. case)
+              </a>
+            </li>
+            <li>
+              <a href="https://www.reuters.com/legal/litigation/artists-sue-stability-ai-midjourney-deviantart-over-copyright-images-2023-01-16/" target="_blank" rel="noreferrer">
+                Reuters summary: Andersen et al. v. Stability AI, Midjourney, DeviantArt
+              </a>
+            </li>
+            <li>
+              <a href="https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai" target="_blank" rel="noreferrer">
+                European Commission - AI regulatory framework overview
+              </a>
+            </li>
+            <li>
+              <a href="https://www.wipo.int/portal/en/artificial_intelligence/" target="_blank" rel="noreferrer">
+                WIPO - Artificial Intelligence and Intellectual Property resources
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="conclusion" class="section">
+      <div class="container">
+        <h2 class="section-title">Conclusion</h2>
+        <p class="mb-0">
+          Generative AI creates major opportunities for productivity and creativity, but it also
+          raises difficult ethical and legal questions about ownership, fairness, transparency, and
+          accountability. Through clear explanations, multiple viewpoints, and interactive policy
+          tradeoffs, this site encourages users to think critically about what responsible AI should
+          look like.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Educational project - not legal advice. Laws and case outcomes may change over time.
+  </footer>
+
+  <script>
+    const form = document.getElementById("policyForm");
+    const regulationRange = document.getElementById("regulationRange");
+
+    const innovationValue = document.getElementById("innovationValue");
+    const fairnessValue = document.getElementById("fairnessValue");
+    const creatorValue = document.getElementById("creatorValue");
+    const trustValue = document.getElementById("trustValue");
+
+    const innovationFill = document.getElementById("innovationFill");
+    const fairnessFill = document.getElementById("fairnessFill");
+    const creatorFill = document.getElementById("creatorFill");
+    const trustFill = document.getElementById("trustFill");
+
+    const policySummary = document.getElementById("policySummary");
+    const stakeholderImpact = document.getElementById("stakeholderImpact");
+
+    function setMetric(valueNode, fillNode, value) {
+      const safe = Math.max(0, Math.min(100, Math.round(value)));
+      valueNode.textContent = String(safe);
+      fillNode.style.width = safe + "%";
+    }
+
+    function getRadioValue(name) {
+      const selected = form.querySelector("input[name='" + name + "']:checked");
+      return selected ? selected.value : "";
+    }
+
+    function updatePolicyModel() {
+      const q1 = getRadioValue("q1");
+      const q2 = getRadioValue("q2");
+      const q3 = getRadioValue("q3");
+      const reg = Number(regulationRange.value);
+
+      let innovation = 50;
+      let fairness = 50;
+      let creator = 50;
+      let trust = 50;
+
+      if (q1 === "allow") {
+        innovation += 20;
+        fairness -= 14;
+        creator -= 18;
+        trust -= 6;
+      } else if (q1 === "limited") {
+        innovation += 8;
+        fairness += 3;
+        creator += 5;
+        trust += 4;
+      } else if (q1 === "require") {
+        innovation -= 10;
+        fairness += 16;
+        creator += 18;
+        trust += 8;
+      }
+
+      if (q2 === "no") {
+        innovation += 10;
+        fairness -= 15;
+        creator -= 20;
+        trust -= 8;
+      } else if (q2 === "optin") {
+        innovation += 2;
+        fairness += 8;
+        creator += 10;
+        trust += 6;
+      } else if (q2 === "mandatory") {
+        innovation -= 9;
+        fairness += 17;
+        creator += 20;
+        trust += 10;
+      }
+
+      if (q3 === "none") {
+        innovation += 6;
+        fairness -= 5;
+        creator -= 2;
+        trust -= 18;
+      } else if (q3 === "highrisk") {
+        innovation += 2;
+        fairness += 4;
+        creator += 3;
+        trust += 10;
+      } else if (q3 === "all") {
+        innovation -= 4;
+        fairness += 8;
+        creator += 6;
+        trust += 16;
+      }
+
+      innovation += (50 - reg) * 0.22;
+      fairness += (reg - 50) * 0.2;
+      creator += (reg - 50) * 0.26;
+      trust += (reg - 50) * 0.16;
+
+      setMetric(innovationValue, innovationFill, innovation);
+      setMetric(fairnessValue, fairnessFill, fairness);
+      setMetric(creatorValue, creatorFill, creator);
+      setMetric(trustValue, trustFill, trust);
+
+      const blended = (Number(innovationValue.textContent) + Number(fairnessValue.textContent) +
+        Number(creatorValue.textContent) + Number(trustValue.textContent)) / 4;
+
+      if (blended >= 68) {
+        policySummary.textContent =
+          "Balanced-rights policy: strong trust and creator safeguards with moderate innovation speed.";
+        stakeholderImpact.textContent =
+          "Likely impact: creators and the public gain confidence; companies face higher compliance cost.";
+      } else if (blended >= 52) {
+        policySummary.textContent =
+          "Mixed policy: some safeguards are in place, but tradeoffs remain unresolved.";
+        stakeholderImpact.textContent =
+          "Likely impact: companies and users benefit, while creator protections vary by implementation.";
+      } else {
+        policySummary.textContent =
+          "Innovation-heavy policy: speed is prioritized over compensation and transparency.";
+        stakeholderImpact.textContent =
+          "Likely impact: short-term business gains, but higher long-term legal and trust risk.";
+      }
+    }
+
+    form.addEventListener("input", updatePolicyModel);
+    updatePolicyModel();
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
